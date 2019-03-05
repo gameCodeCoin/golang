@@ -1,0 +1,24 @@
+当执行体之间需要相互传递消息时，通常需要基于一个消
+息队列（message queue）或者进程邮箱（process mail box）这样的设施进行通信。 
+
+Go语言推荐采用“Erlang风格的并发模型”的编程范式，尽管传统的“共享内存模型”仍然
+被保留，允许适度地使用。在Go语言中内置了消息队列的支持，只不过它叫通道（channel）。两
+个goroutine之间可以通过通道来进行交互。
+
+在团队协作的过程中，人们需要建立统一的交互语言来降低沟通的成本。规范化体现在多
+个层面，如：  
+ 代码风格规范 
+ 错误处理规范 
+ 包管理 
+ 契约规范（接口） 
+ 单元测试规范 
+ 功能开发的流程规范 
+
+defer
+f, err := os.Open(filename) 
+if err != nil { 
+    log.Println("Open file failed:", err) 
+    return 
+} 
+defer f.Close() 
+... //  操作已经打开的 f 文件
